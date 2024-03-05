@@ -39,4 +39,4 @@ make
 Contributions are welcome! If you find any bugs or want to add new features, feel free to open an issue or submit a pull request.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under version 3 of the GNU General Public License - see the LICENSE file for details.
