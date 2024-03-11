@@ -10,7 +10,7 @@ public:
   virtual void dump();
 };
 
-class UnionASTNode : ASTNode {
+class UnionASTNode : public ASTNode {
   ASTNode *LHS, *RHS;
 
 public:
@@ -18,7 +18,7 @@ public:
   void dump();
 };
 
-class ConcatASTNode : ASTNode {
+class ConcatASTNode : public ASTNode {
   ASTNode *LHS, *RHS;
 
 public:
@@ -26,7 +26,7 @@ public:
   void dump();
 };
 
-class KleeneStarASTNode : ASTNode {
+class KleeneStarASTNode : public ASTNode {
   ASTNode *operand;
 
 public:
