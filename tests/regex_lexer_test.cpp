@@ -1,4 +1,4 @@
-#include "regex/lexer.h"
+#include "regex/Lexer.h"
 #include <iostream>
 
 int main(int argc, char const *argv[])
