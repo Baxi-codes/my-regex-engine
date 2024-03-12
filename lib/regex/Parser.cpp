@@ -40,8 +40,8 @@ ASTNode *Parser::parse() {
 }
 
 ASTNode *Parser::R() {
-  ASTNode* LHS = T();
-  ASTNode* RHS = R_prime();
+  ASTNode *LHS = T();
+  ASTNode *RHS = R_prime();
   if (!LHS) {
     std::cerr << "This shouldn't happen in R\n";
     return nullptr;
@@ -53,24 +53,23 @@ ASTNode *Parser::R() {
 }
 
 ASTNode *Parser::R_prime() {
-  if (currentToken.type == TOKEN_UNION)
-  {
+  if (currentToken.type == TOKEN_UNION) {
     eat(TOKEN_UNION);
     return R();
   } else {
-    if (currentToken.type == TOKEN_RPAREN || currentToken.type == TOKEN_EOF)
-    {
+    if (currentToken.type == TOKEN_RPAREN || currentToken.type == TOKEN_EOF) {
       return nullptr;
     } else {
-      std::cerr << "Unexpected token in R_prime: " << currentToken.lexeme << std::endl;
+      std::cerr << "Unexpected token in R_prime: " << currentToken.lexeme
+                << std::endl;
       return nullptr;
     }
   }
 }
 
 ASTNode *Parser::T() {
-  ASTNode* LHS = F();
-  ASTNode* RHS = T_prime();
+  ASTNode *LHS = F();
+  ASTNode *RHS = T_prime();
   if (!LHS) {
     std::cerr << "This shouldn't happen in T\n";
     return nullptr;
@@ -82,24 +81,24 @@ ASTNode *Parser::T() {
 }
 
 ASTNode *Parser::T_prime() {
-  if (currentToken.type == TOKEN_SYMBOL)
-  {
+  if (currentToken.type == TOKEN_SYMBOL) {
     return T();
   } else if (currentToken.type == TOKEN_LPAREN) {
     return T();
   } else {
-    if (currentToken.type == TOKEN_RPAREN || currentToken.type == TOKEN_UNION || currentToken.type == TOKEN_EOF)
-    {
+    if (currentToken.type == TOKEN_RPAREN || currentToken.type == TOKEN_UNION ||
+        currentToken.type == TOKEN_EOF) {
       return nullptr;
     } else {
-      std::cerr << "Unexpected token in T_prime: " << currentToken.lexeme << std::endl;
+      std::cerr << "Unexpected token in T_prime: " << currentToken.lexeme
+                << std::endl;
       return nullptr;
     }
   }
 }
 
 ASTNode *Parser::F() {
-  ASTNode* LHS = A();
+  ASTNode *LHS = A();
   bool RHS = F_prime();
   if (!LHS) {
     std::cerr << "This shouldn't happen in F\n";
@@ -116,23 +115,25 @@ bool Parser::F_prime() {
     eat(TOKEN_KLEENE_STAR);
     return true;
   }
-  if (currentToken.type == TOKEN_SYMBOL || currentToken.type == TOKEN_LPAREN || currentToken.type == TOKEN_RPAREN || currentToken.type == TOKEN_UNION || currentToken.type == TOKEN_EOF)
-  {
+  if (currentToken.type == TOKEN_SYMBOL || currentToken.type == TOKEN_LPAREN ||
+      currentToken.type == TOKEN_RPAREN || currentToken.type == TOKEN_UNION ||
+      currentToken.type == TOKEN_EOF) {
     return false;
   } else {
-    std::cerr << "Unexpected token in F_prime: " << currentToken.lexeme << std::endl;
+    std::cerr << "Unexpected token in F_prime: " << currentToken.lexeme
+              << std::endl;
     return false;
   }
 }
 
 ASTNode *Parser::A() {
   if (currentToken.type == TOKEN_SYMBOL) {
-    ASTNode* node = new SymbolASTNode(currentToken);
+    ASTNode *node = new SymbolASTNode(currentToken);
     eat(TOKEN_SYMBOL);
     return node;
   } else if (currentToken.type == TOKEN_LPAREN) {
     eat(TOKEN_LPAREN);
-    ASTNode* node = R();
+    ASTNode *node = R();
     eat(TOKEN_RPAREN);
     return node;
   } else {
