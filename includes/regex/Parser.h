@@ -15,7 +15,7 @@ private:
   ASTNode* T();
   ASTNode* T_prime();
   ASTNode* F();
-  ASTNode* F_prime();
+  bool F_prime();
   ASTNode* A();
 
 public:

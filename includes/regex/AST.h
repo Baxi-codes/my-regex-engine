@@ -1,13 +1,12 @@
 #ifndef AST_H
 #define AST_H
 
+#include "regex/Lexer.h"
 #include <iostream>
 
 class ASTNode {
 public:
-  ASTNode();
-  virtual ~ASTNode();
-  virtual void dump();
+  virtual void dump() = 0;
 };
 
 class UnionASTNode : public ASTNode {
@@ -31,6 +30,14 @@ class KleeneStarASTNode : public ASTNode {
 
 public:
   KleeneStarASTNode(ASTNode *op) : operand(op) {}
+  void dump();
+};
+
+class SymbolASTNode : public ASTNode {
+  Token symbol;
+
+public:
+  SymbolASTNode(Token sym) : symbol(sym) {}
   void dump();
 };
 
