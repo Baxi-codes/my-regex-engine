@@ -2,7 +2,7 @@
 
 This project is a regular expression engine supporting basic operations such as union, concatenation, and Kleene star. It utilizes Deterministic Finite Automata (DFA) for efficient pattern matching.
 
-The project is yet to be fully implemented. Current state of implementation: Lexer implemented.
+The project is yet to be fully implemented. Current state of implementation: Parser implemented.
 
 ## Implementation
 

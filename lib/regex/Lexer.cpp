@@ -47,11 +47,15 @@ Token Lexer::getNextToken() {
     advance();
     return {TOKEN_RPAREN, ")"};
   default:
-    std::string symbol;
     if (peek() == '\\') {
       advance();
     }
-    symbol += peek();
+    std::string symbol;
+    if (peek() == 'e') {
+      symbol = "null";
+    } else {
+      symbol += peek();      
+    }
     advance();
     return {TOKEN_SYMBOL, symbol};
   }

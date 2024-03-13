@@ -1,3 +1,4 @@
+#include <iostream>
 #include "regex/Parser.h"
 
 Parser::Parser(const std::string &input)
