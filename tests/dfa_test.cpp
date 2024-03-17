@@ -1,4 +1,4 @@
-#include "dfa/dfa.h"
+#include "DFA/DFA.h"
 #include <iostream>
 #include <map>
 #include <string>

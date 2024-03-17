@@ -10,7 +10,7 @@ include_directories(${CMAKE_SOURCE_DIR}/includes)
 
 # Add source files
 set(SOURCES
-    lib/dfa/dfa.cpp
+    lib/DFA/DFA.cpp
     lib/regex/Lexer.cpp
     lib/regex/AST.cpp
     lib/regex/Parser.cpp
