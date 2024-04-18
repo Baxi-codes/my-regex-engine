@@ -12,5 +12,6 @@ int main(int argc, char const *argv[]) {
   ASTNode *AST = myParser.parse();
   AST->dump();
   printf("\n");
+  std::cout << "Nullable: " << nullable(AST) << std::endl;
   return 0;
 }

@@ -37,7 +37,7 @@ void Parser::eat(TokenType type) {
 
 ASTNode *Parser::parse() {
   currentToken = lexer.getNextToken(); // Initialize currentToken
-  return R();
+  return new ConcatASTNode(R(), new SymbolASTNode({TOKEN_SYMBOL, std::string("\0")}));
 }
 
 ASTNode *Parser::R() {
